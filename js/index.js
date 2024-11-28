@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
    }
    tabHeadPhone();
 
-   const historyChnage = () => {
+   const historyChange = () => {
         const historyDummy = {
             1920: {
                 h1_text: "1920'S",
@@ -109,5 +109,5 @@ document.addEventListener('DOMContentLoaded', () => {
             bgHistory.style.backgroundImage = historyDummy[dummyhistory].bg_url;
         });
    }
-   historyChnage();
+   historyChange();
 });

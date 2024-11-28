@@ -96,7 +96,7 @@ function fullset(){
                     page = page.index()-1;
                     moving_sections(page, pagelength);
                 }else{
-                    alert("첫번째 섹션 입니다.");
+                    // alert("첫번째 섹션 입니다.");
                 }	
             }else{ // 마우스 휠을 아래로	
                 var nextPage = parseInt(page.index()+1); //다음페이지번호
@@ -111,7 +111,7 @@ function fullset(){
                     }
                     moving_sections(nextPage, pagelength);
                 }else{ // 현재 마지막 페이지 일때는
-                    alert("마지막 섹션 입니다!");
+                    // alert("마지막 섹션 입니다!");
                 }
             }
         }else{
@@ -156,21 +156,34 @@ function full_sub_sizing(){
         $(this).find("li").eq(0).addClass("selected");
     });
     $(".btn_left, .btn_right").each(function(){
+        var sub_counter = parseInt($(this).parents(".fullsection").find(".full_sub_con").attr("data-index"));
+        if(sub_counter == 1){
+            $(this).parent(".fullsection").find(".btn_left").addClass("disable");
+        }
         $(this).click(function(){
-            var sub_counter = parseInt($(this).parents(".fullsection").find(".full_sub_con").attr("data-index"));
+            sub_counter = parseInt($(this).parents(".fullsection").find(".full_sub_con").attr("data-index"));
             var move_w = prnts_w;
             if($(this).hasClass("btn_left")){
                 if(sub_counter > 1){
                     sub_counter -=1;
                 }else{
-                    alert("첫 페이지 입니다");
+                    // alert("첫 페이지 입니다");
                 }
             }else{
                 if(sub_counter < $(this).parents(".fullsection").find(".full_sub").length){
                     sub_counter +=1;
                 }else{
-                    alert("막 페이지 입니다");
+                    // alert("막 페이지 입니다");
                 }
+            }
+            if(sub_counter == 1){
+                $(this).parent(".fullsection").find(".btn_left").addClass("disable");
+                $(this).parent(".fullsection").find(".btn_right").removeClass("disable");
+            }else if(sub_counter == $(this).parents(".fullsection").find(".full_sub").length){
+                $(this).parent(".fullsection").find(".btn_left").removeClass("disable");
+                $(this).parent(".fullsection").find(".btn_right").addClass("disable");
+            }else{
+                $(this).parent(".fullsection").find(".btn_right, .btn_left").removeClass("disable");
             }
             $(".quick li.on ul.inner_dots").find("li").removeClass("selected");
             $(".quick li.on ul.inner_dots").find("li").eq(sub_counter-1).addClass("selected");
@@ -191,6 +204,15 @@ function full_sub_sizing(){
                 sub_counter = sub_page + 1;
                 var move_w = prnts_w;
                 move_w = move_w * sub_page * -1;
+                if(sub_counter == 1){
+                    $(".fullsection").eq(section_num).find(".btn_left").addClass("disable");
+                    $(".fullsection").eq(section_num).find(".btn_right").removeClass("disable");
+                }else if(sub_counter == $(".fullsection").eq(section_num).find(".full_sub").length){
+                    $(".fullsection").eq(section_num).find(".btn_left").removeClass("disable");
+                    $(".fullsection").eq(section_num).find(".btn_right").addClass("disable");
+                }else{
+                    $(".fullsection").eq(section_num).find(".btn_right, .btn_left").removeClass("disable");
+                }
                 $(".fullsection").eq(section_num).find(".full_sub_con").stop().animate({left: move_w}, change_speed).attr("data-index", sub_counter).find(".full_sub").eq(sub_counter-1).removeClass("hide");
             });
         });

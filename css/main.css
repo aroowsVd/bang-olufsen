@@ -42,7 +42,8 @@
 .full3 {}
 .full3 > .full_sub_con {}
 .full3 > .full_sub_con > .full_sub {}
-.full3 > .full_sub_con > .full_sub > .bg_history { position: absolute; top: 50%; right: 100px; width: 1000px; height: 881px; background-image: url(../img/img_history_1920.webp); transform: translate(0, -50%); }
+.full3 > .full_sub_con > .full_sub > .bg_history { position: absolute; top: 50%; right: 100px; width: 1000px; height: 881px; background-image: url(../img/img_history_1920.webp); transform: translate(0, -50%); transition: filter 0.5s ease; }
+.full3 > .full_sub_con > .full_sub > .bg_history.blurred { filter: blur(10px); }
 .full3 > .full_sub_con > .full_sub .img_frame { position: relative; width: 100%; aspect-ratio: 1 / 1; }
 .full3 > .full_sub_con > .full_sub .img_frame::before { position: absolute; content: ''; top: 0; left: 0; width: 100%; height: 100%; box-shadow: 18px 18px 0 var(--color-point-01); }
 .full3 > .full_sub_con > .full_sub .img_frame > img { width: 100%; }

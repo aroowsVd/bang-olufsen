@@ -91,7 +91,8 @@ ul.v_con.nine_con  > li.cells { width: calc(11.111% - var(--mrgn-x2)); }
 .no_mg { margin: 0 !important; }
 .no_md { padding: 0 !important; }
 
-.pagination{ position: fixed; bottom: 30px; right: 60px; z-index: 999; }
+.pagination{ position: fixed; bottom: 30px; right: 60px; z-index: 999; display: flex; gap: 5px; align-items: baseline; }
+.pagination > b, .pagination > span { line-height: 1em; }
 
 .page_text_left { position: fixed; left: 60px; bottom: -16px; transform: rotate(-90deg); transform-origin: top left; text-transform: uppercase; font-family: "Poppins"; font-size: 60px; font-weight: 700; color: var(--color-k-015); }
 body.black .page_text_left { color: var(--color-w-015); }
@@ -106,7 +107,9 @@ body.black .page_text_left { color: var(--color-w-015); }
 .inner_dots > li { display: inline-block; margin-right: 10px; }
 
 .btn_left,
-.btn_right { position: fixed; bottom:30px; left: 50%; transform: translate(-50%, -50%); z-index: 1; }
+.btn_right { position: fixed; bottom:30px; left: 50%; width: 30px; height: 30px; transform: translate(-50%, -50%); z-index: 1; border: 2px solid var(--color-point-02); cursor: pointer; display: flex; justify-content: center; align-items: center; color: var(--color-point-01); box-shadow: 0px 0px 0 var(--color-point-01); transition: all 150ms linear; }
+:is(.btn_left, .btn_right):hover { color: #fff; background: var(--color-point-02); box-shadow: 3px 3px 0 var(--color-point-01); }
+.btn_left.disable, .btn_right.disable { pointer-events: none; border: 2px solid var(--color-k-025); color: var(--color-k-025); }
 .btn_left { margin-left: -40px; }
 .btn_right { margin-left: 40px; }  
 
